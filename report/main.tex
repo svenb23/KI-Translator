@@ -121,26 +121,20 @@
 \tableofcontents
 \newpage
 
-\listoffigures
-\addcontentsline{toc}{section}{Abbildungsverzeichnis}
-\newpage
-
-\listoftables
-\addcontentsline{toc}{section}{Tabellenverzeichnis}
-\newpage
-
 \section*{Abkürzungsverzeichnis}
 \addcontentsline{toc}{section}{Abkürzungsverzeichnis}
 \begin{acronym}[KMU]
     \acro{API}{Application Programming Interface}
+    \acro{KMU}{Kleine und mittlere Unternehmen}
+    \acro{LLM}{Large Language Model}
 \end{acronym}
 \newpage
 
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
-\section{Einleitung}
-Kleine und mittlere Unternehmen (KMU) mit internationalem Kundenstamm stehen vor der Herausforderung, Support-Anfragen 
+\section{Konzeptvorstellung}
+Kleine und mittlere Unternehmen (KMU) mit internationalem Kundenstamm stehen vor der Herausforderung, Support-Anfragen
 in mehreren Sprachen effizient zu bearbeiten. Professionelle Übersetzungsdienste sind kostenintensiv, manuelle Übersetzungen 
 verlangsamen den Workflow. KI-basierte Übersetzungs-APIs bieten eine Lösung, die sich nahtlos in bestehende Ticket-Systeme integrieren lässt.
 
@@ -170,23 +164,13 @@ Für das Konzept sprechen der wachsende Marktbedarf bei KMU, die technologische 
 REST-APIs sind Industriestandard und ermöglichen einfache Integration.
 
 Risiken bestehen bei der Übersetzungsqualität (Halluzinationen bei Fachbegriffen), Vendor Lock-in und Datenschutz.
-\clearpage
+
+\subsection{Anforderungen}
+Die ausführlichen Anforderungen inklusive MoSCoW-Priorisierung, Kosten, Lizenzen und rechtlichen Kriterien werden in der separaten Anforderungsliste behandelt.
+
 \section*{Projektrepository}
 \addcontentsline{toc}{section}{Projektrepository}
 Der vollständige Quellcode des Demonstrators ist im GitHub-Repository verfügbar:
 \url{https://github.com/svenb23/KI-Translator}
-
-\newpage
-\printbibliography
-\addcontentsline{toc}{section}{Literaturverzeichnis}
-
-\newpage
-\section*{Verzeichnis der Anhänge}
-\addcontentsline{toc}{section}{Verzeichnis der Anhänge}
-
-\appendix
-\section*{Anhang}
-\addcontentsline{toc}{section}{Anhang}
-
 
 \end{document}
