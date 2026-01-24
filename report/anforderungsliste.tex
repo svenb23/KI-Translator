@@ -106,4 +106,26 @@ Won't & PDF/Word-Verarbeitung mit Layout-Erhalt & Erhöhte Komplexität \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\section{Nicht-funktionale Anforderungen}
+
+\begin{table}[H]
+\centering
+\caption{Nicht-funktionale Anforderungen}
+\begin{tabular}{p{1.2cm}p{7cm}p{5cm}}
+\toprule
+\textbf{Priorität} & \textbf{Beschreibung} & \textbf{Begründung} \\
+\midrule
+Must & Übersetzung muss verständlich und sinngemäß korrekt sein & Qualität entscheidet über Nutzbarkeit \\
+Should & Antwortzeit der API unter 3 Sekunden & Akzeptanz im Arbeitsalltag \\
+Should & Unterstützung von mind. 100 parallelen Anfragen & Relevanz für KMU-Einsatz \\
+Should & OpenAPI/Swagger-Dokumentation & Einfache Integration \\
+Should & API-Key-basierte Authentifizierung & Zugriffskontrolle \\
+Should & HTTPS-Verschlüsselung für alle Übertragungen & Datenschutz \\
+Could & Konfigurierbare Rate-Limits pro API-Key & Missbrauchsschutz \\
+Could & Containerisierbar (z.B. Docker) & Flexible Bereitstellung \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \end{document}
