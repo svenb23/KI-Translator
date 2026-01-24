@@ -1,0 +1,81 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{float}
+
+\usepackage[scaled]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[a4paper, top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+
+\usepackage{setspace}
+\setstretch{1.5}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\usepackage{microtype}
+\sloppy
+
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\fontsize{12}{14}\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\fontsize{12}{14}\bfseries}{\thesubsection}{1em}{}
+
+\usepackage[colorlinks=true,linkcolor=black,citecolor=blue,urlcolor=blue]{hyperref}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage}
+
+\usepackage[german=quotes]{csquotes}
+
+\usepackage{caption}
+\captionsetup[table]{font=small,skip=10pt,labelfont=bf}
+
+\begin{document}
+
+\begin{titlepage}
+    \thispagestyle{empty}
+    \centering
+    \vspace*{5cm}
+    {\Huge\bfseries Priorisierte Anforderungsliste \par}
+    \vspace{1cm}
+    {\Large KI-basierte Sprachübersetzer im Unternehmenskontext \par}
+    \vspace{0.5cm}
+    {\large Projekt: Generative KI im Unternehmenskontext (DLBFMPGKIU01) \par}
+    \vspace{1cm}
+    {\large Sven Behrens \par}
+    {\large Matrikelnummer: 42303511 \par}
+    \vspace{0.5cm}
+    {\large \today \par}
+\end{titlepage}
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\section{Ziel-KMU}
+
+
+\begin{table}[H]
+\centering
+\caption{Charakteristiken der Ziel-KMU}
+\begin{tabular}{p{4cm}p{10cm}}
+\toprule
+\textbf{Merkmal} & \textbf{Beschreibung} \\
+\midrule
+Branche & Dienstleistung, E-Commerce, IT-Services mit internationalem Kundenstamm \\
+Unternehmensgröße & 10--250 Mitarbeiter (EU-Definition KMU) \\
+IT-Kompetenz & Grundlegende IT-Kenntnisse, Erfahrung mit Ticket-Systemen \\
+Übersetzungsbedarf & Support-Tickets, Kundenanfragen, E-Mail-Korrespondenz \\
+Systemlandschaft & Nutzung gängiger Ticket- oder CRM-Systeme (z.B. Zendesk, Freshdesk) \\
+Budget & Begrenzt, Fokus auf kosteneffiziente Lösungen \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{document}
