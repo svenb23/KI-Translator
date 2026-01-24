@@ -78,4 +78,32 @@ Budget & Begrenzt, Fokus auf kosteneffiziente Lösungen \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\section{Funktionale Anforderungen}
+
+
+\begin{table}[H]
+\centering
+\caption{Funktionale Anforderungen}
+\begin{tabular}{p{1.2cm}p{7cm}p{5cm}}
+\toprule
+\textbf{Priorität} & \textbf{Beschreibung} & \textbf{Begründung} \\
+\midrule
+Must & REST-API für Übersetzungen zwischen DE, EN, FR, ES & Kernfunktion des Demonstrators \\
+Must & API-Endpunkt mit Parametern für Quell-/Zielsprache und Text & Voraussetzung für Ticket-System-Integration \\
+Must & Weboberfläche mit Textfeld, Sprachauswahl und Übersetzungs-Button & Direkte Nutzung für die Vorstellung \\
+Must & Standardisierte Status- und Fehlermeldungen (HTTP-Codes, JSON) & Notwendig für stabile Systemintegration \\
+Should & Erhalt von Textformatierungen (Absätze, Listen) & Wichtig für strukturierte Tickets \\
+Should & Automatische Erkennung der Quellsprache, falls nicht angegeben & Reduziert Bedienaufwand und Fehlerquellen \\
+Should & Übersetzung mehrerer Texte in einer Anfrage (Batch) & Effizienzsteigerung bei Ticket-Verarbeitung \\
+Should & Protokollierung von Anfragen ohne Speicherung des Inhalts & Ermöglicht Debugging und Nachvollziehbarkeit \\
+Could & Callback-URLs für asynchrone Verarbeitung & Für längere Texte hilfreich \\
+Could & Dashboard für API-Nutzung und Tokenverbrauch & Kostenkontrolle \\
+Won't & Weitere Sprachen (z.B. Chinesisch, Japanisch) & Außerhalb des Projektumfangs \\
+Won't & Simultanübersetzung für Videokonferenzen & Technisch zu komplex \\
+Won't & Speech-to-Text und Text-to-Speech & Anderer Anwendungsfall \\
+Won't & PDF/Word-Verarbeitung mit Layout-Erhalt & Erhöhte Komplexität \\
+\bottomrule
+\end{tabular}
+\end{table}
 \end{document}
