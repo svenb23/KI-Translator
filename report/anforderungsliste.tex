@@ -122,8 +122,30 @@ Should & Unterstützung von mind. 100 parallelen Anfragen & Relevanz für KMU-Ei
 Should & OpenAPI/Swagger-Dokumentation & Einfache Integration \\
 Should & API-Key-basierte Authentifizierung & Zugriffskontrolle \\
 Should & HTTPS-Verschlüsselung für alle Übertragungen & Datenschutz \\
+Should & Betriebskosten unter 100€/Monat bei typischem KMU-Volumen & Budget der Zielgruppe \\
 Could & Konfigurierbare Rate-Limits pro API-Key & Missbrauchsschutz \\
 Could & Containerisierbar (z.B. Docker) & Flexible Bereitstellung \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Rechtliche und ethische Anforderungen}
+
+\begin{table}[H]
+\centering
+\caption{Rechtliche und ethische Anforderungen}
+\begin{tabular}{p{1.2cm}p{7cm}p{5cm}}
+\toprule
+\textbf{Priorität} & \textbf{Beschreibung} & \textbf{Begründung} \\
+\midrule
+Must & Keine dauerhafte Speicherung von Übersetzungstexten & DSGVO-Konformität \\
+Must & Verwendete LLM-API muss kommerziell nutzbar sein & Unternehmenskontext \\
+Must & Einstufung des Systems als Niedrigrisiko-KI gemäß EU AI Act & Regulatorische Einordnung und Einhaltung gesetzlicher Anforderungen \\
+Must & Eingabetexte verbleiben im Eigentum des Nutzers & Rechtssicherheit \\
+Should & Transparente Dokumentation der Datenverarbeitung & Vertrauensbildung \\
+Should & Kennzeichnung als KI-generierte Übersetzung & EU AI-Act Transparenzpflicht \\
+Should & Keine Nutzung der Texte für Modelltraining & Datenschutz und IP-Schutz \\
+Should & KI darf keine zusätzlichen Inhalte halluzinieren & Risiko bei LLM-Übersetzungen \\
 \bottomrule
 \end{tabular}
 \end{table}
