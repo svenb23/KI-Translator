@@ -1,0 +1,97 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{float}
+
+\usepackage[scaled]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[a4paper, top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+
+\usepackage{setspace}
+\setstretch{1.5}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\usepackage{microtype}
+\sloppy
+
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\fontsize{12}{14}\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\fontsize{12}{14}\bfseries}{\thesubsection}{1em}{}
+
+\usepackage[colorlinks=true,linkcolor=black,citecolor=blue,urlcolor=blue]{hyperref}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage}
+
+\usepackage[german=quotes]{csquotes}
+
+\usepackage{caption}
+\captionsetup[table]{font=small,skip=10pt,labelfont=bf}
+
+\usepackage[backend=biber, style=apa]{biblatex}
+\addbibresource{references.bib}
+
+\begin{document}
+
+\begin{titlepage}
+    \thispagestyle{empty}
+    \centering
+    \vspace*{5cm}
+    {\Huge\bfseries Komponentenauswahl \par}
+    \vspace{1cm}
+    {\Large KI-basierte Sprachübersetzer im Unternehmenskontext \par}
+    \vspace{0.5cm}
+    {\large Projekt: Generative KI im Unternehmenskontext (DLBFMPGKIU01) \par}
+    \vspace{1cm}
+    {\large Sven Behrens \par}
+    {\large Matrikelnummer: 42303511 \par}
+    \vspace{0.5cm}
+    {\large \today \par}
+\end{titlepage}
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{Einleitung}
+
+Für die Umsetzung des Übersetzungs-Demonstrators ist die Auswahl einer geeigneten Übersetzungskomponente erforderlich. 
+Diese Dokumentation beschreibt das systematische Auswahlverfahren basierend auf den definierten Anforderungen.
+
+\section{Untersuchte Optionen}
+
+Folgende Übersetzungslösungen wurden analysiert:
+
+\begin{table}[H]
+\centering
+\caption{Übersicht der untersuchten Lösungen}
+\begin{tabular}{p{4cm}p{3cm}p{6.5cm}}
+\toprule
+\textbf{Lösung} & \textbf{Typ} & \textbf{Kurzbeschreibung} \\
+\midrule
+DeepL API (Pro) & Cloud-API & Spezialisierte Übersetzungs-API, Fokus auf EU-Sprachen \parencite{deepl2024llm} \\
+Google Cloud Translation & Cloud-API & Breites Sprachangebot (133 Sprachen) \parencite{languageio2025} \\
+Microsoft Azure Translator & Cloud-API & Enterprise-Lösung mit Compliance-Fokus \parencite{microsoft2024notrace} \\
+Amazon Translate & Cloud-API & AWS-integrierte Übersetzungslösung \parencite{aws2024translate} \\
+OpenAI GPT-4 & LLM-API & Generatives Sprachmodell mit Übersetzungsfähigkeit \parencite{getblend2025llm} \\
+Anthropic Claude & LLM-API & Generatives Sprachmodell, großer Kontext \parencite{getblend2025llm} \\
+Meta NLLB-200 & Open-Source & Vielsprachiges Übersetzungsmodell \parencite{wmt2024findings} \\
+Helsinki OPUS-MT & Open-Source & Sprachpaarspezifische Modelle \parencite{wmt2024findings} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\clearpage
+\printbibliography
+
+\end{document}
