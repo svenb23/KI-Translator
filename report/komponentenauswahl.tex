@@ -7,6 +7,14 @@
 \usepackage{array}
 \usepackage{booktabs}
 \usepackage{float}
+\usepackage{pifont}
+\usepackage{xcolor}
+\usepackage{threeparttable}
+
+% Bewertungssymbole
+\newcommand{\cmark}{\textcolor{green!70!black}{\ding{51}}}  % Erfüllt
+\newcommand{\wmark}{\textcolor{orange}{\ding{115}}}        % Teilweise
+\newcommand{\xmark}{\textcolor{red}{\ding{55}}}            % Nicht erfüllt
 
 \usepackage[scaled]{helvet}
 \renewcommand{\familydefault}{\sfdefault}
@@ -25,6 +33,7 @@
 \usepackage{titlesec}
 \titleformat{\section}{\normalfont\fontsize{12}{14}\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\normalfont\fontsize{12}{14}\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\fontsize{11}{13}\bfseries}{\thesubsubsection}{1em}{}
 
 \usepackage[colorlinks=true,linkcolor=black,citecolor=blue,urlcolor=blue]{hyperref}
 
@@ -90,6 +99,33 @@ Helsinki OPUS-MT & Open-Source & Sprachpaarspezifische Modelle \parencite{wmt202
 \bottomrule
 \end{tabular}
 \end{table}
+
+\section{Bewertung anhand der Anforderungen}
+
+Die Lösungen werden anhand der in der Anforderungsliste definierten Kriterien bewertet.
+Die Bewertung erfolgt mit: \cmark{} = erfüllt, \wmark{} = teilweise erfüllt, \xmark{} = nicht erfüllt.
+
+\subsection{Funktionale Anforderungen}
+
+\begin{table}[H]
+\centering
+\caption{Bewertung funktionaler Anforderungen}
+\small
+\begin{tabular}{p{3.2cm}cccccc}
+\toprule
+\textbf{Anforderung} & \textbf{DeepL} & \textbf{Azure} & \textbf{Google} & \textbf{GPT-4} & \textbf{NLLB} & \textbf{OPUS-MT} \\
+\midrule
+REST-API verfügbar & \cmark & \cmark & \cmark & \cmark & \wmark & \wmark \\
+Sprachen DE/EN/FR/ES & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark \\
+Batch-Übersetzung & \cmark & \cmark & \cmark & \wmark & \wmark & \wmark \\
+Spracherkennung & \cmark & \cmark & \cmark & \wmark & \wmark & \wmark \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+DeepL, Azure und Google bieten vollständige REST-APIs mit automatischer Spracherkennung und Batch-Verarbeitung \parencite{deepl2024api, microsoft2024notrace}.
+GPT-4 erfordert Prompt-basierte Integration ohne dedizierten Batch-Endpunkt.
+Die Open-Source-Modelle NLLB und OPUS-MT benötigen eigene API-Wrapper und externe Spracherkennungslösungen \parencite{picovoice2025opensource}.
 
 \clearpage
 \printbibliography
