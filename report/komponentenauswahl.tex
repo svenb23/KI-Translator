@@ -110,21 +110,21 @@ Die Bewertung erfolgt mit: \cmark{} = erfüllt, \wmark{} = teilweise erfüllt, \
 \begin{table}[H]
 \centering
 \caption{Bewertung funktionaler Anforderungen}
-\small
-\begin{tabular}{p{3.2cm}cccccc}
+\footnotesize
+\begin{tabular}{p{2.5cm}cccccccc}
 \toprule
-\textbf{Anforderung} & \textbf{DeepL} & \textbf{Azure} & \textbf{Google} & \textbf{GPT-4} & \textbf{NLLB} & \textbf{OPUS-MT} \\
+\textbf{Anforderung} & \textbf{DeepL} & \textbf{Azure} & \textbf{Google} & \textbf{Amazon} & \textbf{GPT-4} & \textbf{Claude} & \textbf{NLLB} & \textbf{OPUS} \\
 \midrule
-REST-API verfügbar & \cmark & \cmark & \cmark & \cmark & \wmark & \wmark \\
-Sprachen DE/EN/FR/ES & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark \\
-Batch-Übersetzung & \cmark & \cmark & \cmark & \wmark & \wmark & \wmark \\
-Spracherkennung & \cmark & \cmark & \cmark & \wmark & \wmark & \wmark \\
+REST-API verfügbar & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark & \wmark & \wmark \\
+Sprachen DE/EN/FR/ES & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark \\
+Batch-Übersetzung & \cmark & \cmark & \cmark & \cmark & \wmark & \wmark & \wmark & \wmark \\
+Spracherkennung & \cmark & \cmark & \cmark & \cmark & \wmark & \wmark & \wmark & \wmark \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-DeepL, Azure und Google bieten vollständige REST-APIs mit automatischer Spracherkennung und Batch-Verarbeitung \parencite{deepl2024api, microsoft2024notrace}.
-GPT-4 erfordert Prompt-basierte Integration ohne dedizierten Batch-Endpunkt.
+DeepL, Azure, Google und Amazon bieten vollständige REST-APIs mit automatischer Spracherkennung und Batch-Verarbeitung \parencite{deepl2024api, microsoft2024notrace, aws2024translate}.
+GPT-4 und Claude erfordern Prompt-basierte Integration; Claude bietet keine dedizierte Batch-API, ermöglicht aber parallele Requests \parencite{anthropic2024api}.
 Die Open-Source-Modelle NLLB und OPUS-MT benötigen eigene API-Wrapper und externe Spracherkennungslösungen \parencite{picovoice2025opensource}.
 
 
@@ -137,26 +137,26 @@ Die Open-Source-Modelle NLLB und OPUS-MT benötigen eigene API-Wrapper und exter
 \begin{table}[H]
 \centering
 \caption{Bewertung nicht-funktionaler Anforderungen}
-\small
-\begin{tabular}{p{3.2cm}cccccc}
+\footnotesize
+\begin{tabular}{p{2.5cm}cccccccc}
 \toprule
-\textbf{Anforderung} & \textbf{DeepL} & \textbf{Azure} & \textbf{Google} & \textbf{GPT-4} & \textbf{NLLB} & \textbf{OPUS-MT} \\
+\textbf{Anforderung} & \textbf{DeepL} & \textbf{Azure} & \textbf{Google} & \textbf{Amazon} & \textbf{GPT-4} & \textbf{Claude} & \textbf{NLLB} & \textbf{OPUS} \\
 \midrule
-Übersetzungsqualität & \cmark & \wmark & \cmark & \cmark & \wmark & \wmark \\
-Antwortzeit < 3s & \cmark & \cmark & \cmark & \wmark & \wmark & \cmark \\
-Kosten < 100€/Monat & \wmark & \cmark & \wmark & \wmark & \cmark & \cmark \\
-100 parallele Anfragen & \wmark & \cmark & \cmark & \xmark & \wmark & \wmark \\
-API-Key-Auth & \cmark & \cmark & \cmark & \cmark & \xmark & \xmark \\
-OpenAPI/Swagger-Doku & \cmark & \wmark & \wmark & \wmark & \xmark & \xmark \\
-HTTPS-Verschlüsselung & \cmark & \cmark & \cmark & \cmark & \wmark & \wmark \\
+Übersetzungsqualität & \cmark & \wmark & \cmark & \cmark & \cmark & \cmark & \wmark & \wmark \\
+Antwortzeit < 3s & \cmark & \cmark & \cmark & \cmark & \wmark & \wmark & \wmark & \cmark \\
+Kosten < 100€/Monat & \wmark & \cmark & \wmark & \cmark & \wmark & \wmark & \cmark & \cmark \\
+100 parallele Anfragen & \wmark & \cmark & \cmark & \cmark & \xmark & \wmark & \wmark & \wmark \\
+API-Key-Auth & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark & \xmark & \xmark \\
+OpenAPI/Swagger-Doku & \cmark & \wmark & \wmark & \wmark & \wmark & \wmark & \xmark & \xmark \\
+HTTPS-Verschlüsselung & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark & \wmark & \wmark \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 
-DeepL liefert die höchste Übersetzungsqualität für EU-Sprachen bei ca. 25\$/Mio Zeichen \parencite{taia2025comparison}.
-Azure Translator bietet das beste Preis-Leistungs-Verhältnis mit ca. 10\$/Mio Zeichen und 2 Mio Zeichen kostenlos pro Monat \parencite{azure2024limits}.
-GPT-4 zeigt hohe Qualität, aber längere Antwortzeiten (oft >3s) und strikte API-Limits \parencite{openai2024terms}.
+DeepL und Claude liefern die höchste Übersetzungsqualität; Claude wurde in Tests als „Translation Champion" bezeichnet \parencite{taia2025comparison, getblend2025llm}.
+Azure und Amazon bieten das beste Preis-Leistungs-Verhältnis mit ca. 10--15\$/Mio Zeichen und Free-Tier-Optionen \parencite{azure2024limits, aws2024translate}.
+GPT-4 und Claude zeigen hohe Qualität, aber längere Antwortzeiten und bei Claude strikte Rate-Limits \parencite{openai2024terms, anthropic2024ratelimits}.
 Open-Source-Lösungen erfordern Selbsthosting mit eigener TLS-Konfiguration.
 
 \clearpage
