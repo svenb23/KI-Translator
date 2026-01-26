@@ -127,6 +127,38 @@ DeepL, Azure und Google bieten vollständige REST-APIs mit automatischer Sprache
 GPT-4 erfordert Prompt-basierte Integration ohne dedizierten Batch-Endpunkt.
 Die Open-Source-Modelle NLLB und OPUS-MT benötigen eigene API-Wrapper und externe Spracherkennungslösungen \parencite{picovoice2025opensource}.
 
+
+
+
+
+\subsection{Nicht-funktionale Anforderungen}
+
+
+\begin{table}[H]
+\centering
+\caption{Bewertung nicht-funktionaler Anforderungen}
+\small
+\begin{tabular}{p{3.2cm}cccccc}
+\toprule
+\textbf{Anforderung} & \textbf{DeepL} & \textbf{Azure} & \textbf{Google} & \textbf{GPT-4} & \textbf{NLLB} & \textbf{OPUS-MT} \\
+\midrule
+Übersetzungsqualität & \cmark & \wmark & \cmark & \cmark & \wmark & \wmark \\
+Antwortzeit < 3s & \cmark & \cmark & \cmark & \wmark & \wmark & \cmark \\
+Kosten < 100€/Monat & \wmark & \cmark & \wmark & \wmark & \cmark & \cmark \\
+100 parallele Anfragen & \wmark & \cmark & \cmark & \xmark & \wmark & \wmark \\
+API-Key-Auth & \cmark & \cmark & \cmark & \cmark & \xmark & \xmark \\
+OpenAPI/Swagger-Doku & \cmark & \wmark & \wmark & \wmark & \xmark & \xmark \\
+HTTPS-Verschlüsselung & \cmark & \cmark & \cmark & \cmark & \wmark & \wmark \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+DeepL liefert die höchste Übersetzungsqualität für EU-Sprachen bei ca. 25\$/Mio Zeichen \parencite{taia2025comparison}.
+Azure Translator bietet das beste Preis-Leistungs-Verhältnis mit ca. 10\$/Mio Zeichen und 2 Mio Zeichen kostenlos pro Monat \parencite{azure2024limits}.
+GPT-4 zeigt hohe Qualität, aber längere Antwortzeiten (oft >3s) und strikte API-Limits \parencite{openai2024terms}.
+Open-Source-Lösungen erfordern Selbsthosting mit eigener TLS-Konfiguration.
+
 \clearpage
 \printbibliography
 
