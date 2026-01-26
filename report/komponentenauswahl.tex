@@ -180,6 +180,35 @@ OpenAI speichert API-Daten 30 Tage zur Missbrauchsprüfung \parencite{techcrunch
 Meta NLLB ist unter CC-BY-NC 4.0 lizenziert und daher nicht kommerziell nutzbar \parencite{picovoice2025opensource}.
 OPUS-MT-Modelle sind unter CC-BY 4.0 frei verfügbar.
 
+\section{Zusammenfassung und Empfehlung}
+
+\begin{table}[H]
+\centering
+\caption{Gesamtbewertung der Lösungen}
+\small
+\begin{tabular}{p{4cm}ccp{6cm}}
+\toprule
+\textbf{Lösung} & \textbf{Eignung} & \textbf{Rang} & \textbf{Begründung} \\
+\midrule
+DeepL API (Pro) & \cmark & 1 & Höchste Qualität für DE/EN/FR/ES, DSGVO-konform \\
+Microsoft Azure Translator & \cmark & 2 & Bestes Preis-Leistungs-Verhältnis, skalierbar \\
+Amazon Translate & \cmark & 3 & Günstig, schnell, aber Opt-Out für DSGVO nötig \\
+Google Cloud Translation & \wmark & 4 & Solide Qualität, aber teurer als Azure/Amazon \\
+Anthropic Claude & \wmark & 5 & Sehr hohe Qualität, aber langsamer und Rate-Limits \\
+Helsinki OPUS-MT & \wmark & 6 & Open-Source-Alternative, mehr Aufwand \\
+OpenAI GPT-4 & \xmark & -- & Zu langsam, hohe Kosten, strikte API-Limits \\
+Meta NLLB-200 & \xmark & -- & Nicht kommerziell nutzbar (CC-BY-NC) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Für den Demonstrator werden DeepL (Qualitätsführer) und Azure Translator (kosteneffizient) empfohlen.
+Beide erfüllen die funktionalen, nicht-funktionalen und rechtlichen Anforderungen weitgehend.
+
+Zusätzlich wird OPUS-MT als Open-Source-Alternative im Demonstrator integriert \parencite{reddit2022nllb}.
+Obwohl die Übersetzungsqualität hinter den kommerziellen APIs zurückbleibt, ermöglicht dies einen direkten Vergleich sowie 
+die Evaluation einer selbstgehosteten Lösung ohne externe API-Abhängigkeit.
+
 \clearpage
 \printbibliography
 
