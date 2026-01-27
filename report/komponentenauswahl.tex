@@ -202,12 +202,17 @@ Meta NLLB-200 & \xmark & -- & Nicht kommerziell nutzbar (CC-BY-NC) \\
 \end{tabular}
 \end{table}
 
-Für den Demonstrator werden DeepL (Qualitätsführer) und Azure Translator (kosteneffizient) empfohlen.
-Beide erfüllen die funktionalen, nicht-funktionalen und rechtlichen Anforderungen weitgehend.
+Für den Demonstrator werden DeepL und OPUS-MT implementiert.
 
-Zusätzlich wird OPUS-MT als Open-Source-Alternative im Demonstrator integriert \parencite{reddit2022nllb}.
-Obwohl die Übersetzungsqualität hinter den kommerziellen APIs zurückbleibt, ermöglicht dies einen direkten Vergleich sowie 
-die Evaluation einer selbstgehosteten Lösung ohne externe API-Abhängigkeit.
+\textbf{DeepL API} als Qualitätsführer: DeepL bietet die höchste Übersetzungsqualität für europäische Sprachen,
+vollständige DSGVO-Konformität mit Serverstandort Deutschland und eine gut dokumentierte REST-API.
+
+\textbf{Helsinki OPUS-MT} als Open-Source-Alternative: OPUS-MT ermöglicht einen direkten Vergleich mit einer
+selbstgehosteten Lösung ohne externe API-Abhängigkeit \parencite{reddit2022nllb}. Die Modelle sind unter CC-BY 4.0
+frei kommerziell nutzbar und können lokal über Hugging Face Transformers betrieben werden.
+
+Diese Kombination ermöglicht im Demonstrator einen aussagekräftigen Vergleich zwischen
+einer kommerziellen Cloud-Lösung und einer selbstgehosteten Open-Source-Alternative.
 
 \clearpage
 \printbibliography
