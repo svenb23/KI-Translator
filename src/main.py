@@ -17,11 +17,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# DeepL Translator
+# DeepL
 translator = deepl.Translator(settings.deepl_api_key) if settings.deepl_api_key else None
 
 
-# OPUS-MT Modelle
+# OPUS-MT
 @lru_cache(maxsize=12)
 def get_opus_model(src: str, tgt: str):
     from transformers import MarianMTModel, MarianTokenizer
@@ -45,11 +45,27 @@ def detect_language(text: str) -> str:
     return detected if scores[detected] > 0 else "en"
 
 
-def opus_translate(text: str, src: str, tgt: str) -> str:
+OPUS_DIRECT_PAIRS = {
+    ("en", "de"), ("de", "en"),
+    ("en", "fr"), ("fr", "en"),
+    ("en", "es"), ("es", "en"),
+}
+
+
+def opus_translate_direct(text: str, src: str, tgt: str) -> str:
     model, tokenizer = get_opus_model(src, tgt)
     inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True)
     translated = model.generate(**inputs)
     return tokenizer.decode(translated[0], skip_special_tokens=True)
+
+
+def opus_translate(text: str, src: str, tgt: str) -> str:
+    if (src, tgt) in OPUS_DIRECT_PAIRS:
+        return opus_translate_direct(text, src, tgt)
+
+    # Pivot
+    intermediate = opus_translate_direct(text, src, "en")
+    return opus_translate_direct(intermediate, "en", tgt)
 
 
 class TranslateRequest(BaseModel):
