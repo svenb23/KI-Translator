@@ -24,13 +24,19 @@
             color: #333;
         }
 
+        .providers {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         .provider-section {
             background: white;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             padding: 20px;
-            max-width: 500px;
-            margin: 0 auto;
+            width: 400px;
         }
 
         .provider-header {
@@ -43,16 +49,20 @@
         .provider-logo {
             font-weight: bold;
             font-size: 18px;
-            color: #0052cc;
         }
 
+        .provider-logo.deepl { color: #0052cc; }
+        .provider-logo.opus { color: #ff6600; }
+
         .provider-badge {
-            background: #0052cc;
-            color: white;
             padding: 3px 8px;
             border-radius: 4px;
             font-size: 12px;
+            color: white;
         }
+
+        .provider-badge.deepl { background: #0052cc; }
+        .provider-badge.opus { background: #ff6600; }
 
         .flags {
             display: flex;
@@ -76,9 +86,11 @@
         }
 
         .flag-btn:hover {
-            border-color: #0052cc;
             transform: scale(1.1);
         }
+
+        .deepl .flag-btn:hover { border-color: #0052cc; }
+        .opus .flag-btn:hover { border-color: #ff6600; }
 
         .flag-btn:disabled {
             opacity: 0.5;
@@ -106,8 +118,10 @@
 
         textarea:focus {
             outline: none;
-            border-color: #0052cc;
         }
+
+        .deepl textarea:focus { border-color: #0052cc; }
+        .opus textarea:focus { border-color: #ff6600; }
 
         .info {
             text-align: center;
@@ -120,34 +134,58 @@
 <body>
     <h1>KI-Translator</h1>
 
-    <div class="provider-section">
-        <div class="provider-header">
-            <span class="provider-logo">DeepL</span>
-            <span class="provider-badge">API</span>
+    <div class="providers">
+        <!-- DeepL -->
+        <div class="provider-section deepl" data-provider="deepl">
+            <div class="provider-header">
+                <span class="provider-logo deepl">DeepL</span>
+                <span class="provider-badge deepl">API</span>
+            </div>
+
+            <div class="flags">
+                <button class="flag-btn" data-lang="de" title="Deutsch">🇩🇪</button>
+                <button class="flag-btn" data-lang="en" title="English">🇬🇧</button>
+                <button class="flag-btn" data-lang="fr" title="Français">🇫🇷</button>
+                <button class="flag-btn" data-lang="es" title="Español">🇪🇸</button>
+            </div>
+
+            <textarea placeholder="Text eingeben..."></textarea>
+            <p class="info">Auf Sprache klicken zum Übersetzen</p>
         </div>
 
-        <div class="flags">
-            <button class="flag-btn" data-lang="de" title="Deutsch">🇩🇪</button>
-            <button class="flag-btn" data-lang="en" title="English">🇬🇧</button>
-            <button class="flag-btn" data-lang="fr" title="Français">🇫🇷</button>
-            <button class="flag-btn" data-lang="es" title="Español">🇪🇸</button>
+        <!-- OPUS-MT -->
+        <div class="provider-section opus" data-provider="opus">
+            <div class="provider-header">
+                <span class="provider-logo opus">OPUS-MT</span>
+                <span class="provider-badge opus">Lokal</span>
+            </div>
+
+            <div class="flags">
+                <button class="flag-btn" data-lang="de" title="Deutsch">🇩🇪</button>
+                <button class="flag-btn" data-lang="en" title="English">🇬🇧</button>
+                <button class="flag-btn" data-lang="fr" title="Français">🇫🇷</button>
+                <button class="flag-btn" data-lang="es" title="Español">🇪🇸</button>
+            </div>
+
+            <textarea placeholder="Text eingeben..."></textarea>
+            <p class="info">Auf Sprache klicken zum Übersetzen</p>
         </div>
-
-        <textarea id="text" placeholder="Text eingeben..."></textarea>
-
-        <p class="info">Auf Sprache klicken zum Übersetzen</p>
     </div>
 
     <script>
         const API_URL = 'http://localhost:8000';
-        const textarea = document.getElementById('text');
-        const flags = document.querySelectorAll('.flag-btn');
 
-        flags.forEach(btn => {
-            btn.addEventListener('click', () => translate(btn.dataset.lang, btn));
+        document.querySelectorAll('.provider-section').forEach(section => {
+            const provider = section.dataset.provider;
+            const textarea = section.querySelector('textarea');
+            const flags = section.querySelectorAll('.flag-btn');
+
+            flags.forEach(btn => {
+                btn.addEventListener('click', () => translate(provider, textarea, btn, flags));
+            });
         });
 
-        async function translate(targetLang, btn) {
+        async function translate(provider, textarea, btn, flags) {
             const text = textarea.value.trim();
             if (!text) return;
 
@@ -155,10 +193,10 @@
             btn.classList.add('loading');
 
             try {
-                const response = await fetch(`${API_URL}/translate`, {
+                const response = await fetch(`${API_URL}/translate/${provider}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ text, target_lang: targetLang })
+                    body: JSON.stringify({ text, target_lang: btn.dataset.lang })
                 });
 
                 if (!response.ok) throw new Error('Übersetzung fehlgeschlagen');
