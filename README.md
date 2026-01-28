@@ -1,8 +1,10 @@
 Zum Testen:
-1. .env erstellen mit DEEPL_API_KEY=key
+1. .env erstellen
+2. DEEPL_API_KEY eintragen
 2. pip install -r requirements.txt
 3. uvicorn src.main:app --reload
-4. http://localhost:8000/docs
+4. Frontend öffnen: frontend/index.html im Browser öffnen
+5. API-Docs: http://localhost:8000/docs
 
 Endpoints:
 - POST /translate/deepl - DeepL API (braucht API-Key)
