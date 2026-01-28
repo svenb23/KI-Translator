@@ -231,8 +231,14 @@ Die Sprachauswahl erfolgt über Buttons für die vier unterstützten Sprachen (D
 
 \subsection{EU AI Act Konformität}
 
-Die API-Responses enthalten das Feld \texttt{ai\_generated: true} zur Kennzeichnung KI-generierter Inhalte gemäß EU AI Act Transparenzpflicht. 
+Die API-Responses enthalten das Feld \texttt{ai\_generated: true} zur Kennzeichnung KI-generierter Inhalte gemäß EU AI Act Transparenzpflicht.
 Das System wird als Niedrigrisiko-KI eingestuft, da es ausschließlich für Übersetzungsaufgaben ohne autonome Entscheidungsfindung eingesetzt wird.
+
+\subsection{Abgrenzung}
+
+Der Demonstrator erfüllt alle Must-Anforderungen der Anforderungsliste. Einige Should-Anforderungen wie API-Key-basierte Authentifizierung, 
+HTTPS-Verschlüsselung, Batch-Übersetzung und Request-Logging wurden bewusst nicht implementiert, da diese für einen Demonstrator den Rahmen 
+sprengen würden. Diese Funktionen wären für einen produktiven Einsatz erforderlich, sind aber für die Demonstration der Kernfunktionalität nicht notwendig.
 
 \vspace{0.5cm}
 \textbf{Repository:} \url{https://github.com/svenb23/KI-Translator}
