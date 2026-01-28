@@ -214,7 +214,7 @@ frei kommerziell nutzbar und können lokal über Hugging Face Transformers betri
 Diese Kombination ermöglicht im Demonstrator einen aussagekräftigen Vergleich zwischen
 einer kommerziellen Cloud-Lösung und einer selbstgehosteten Open-Source-Alternative.
 
-\section{Umsetzung}
+\section{Erläuterung zur Umsetzung}
 
 \subsection{Architektur}
 Das Backend besteht aus einer FastAPI-basierten REST-API mit zwei separaten Übersetzungs-Endpunkten 
@@ -226,7 +226,7 @@ Für OPUS-MT werden die Helsinki-NLP-Modelle über Hugging Face Transformers gel
 direkt verfügbar sind, wurde ein Pivot-Mechanismus implementiert: Übersetzungen wie DE$\rightarrow$FR erfolgen über den 
 Zwischenschritt DE$\rightarrow$EN$\rightarrow$FR. Ein LRU-Cache speichert bis zu 12 geladene OPUS-MT-Modelle, um wiederholte Ladezeiten zu vermeiden.
 
-Das Frontend besteht aus einer HTML/JavaScript-Weboberfläche mit zwei nebeneinander angeordneten Übersetzungsfeldern, eines für jedes Modell. 
+Das Frontend besteht aus einer HTML/JavaScript-Weboberfläche mit zwei nebeneinander angeordneten Übersetzungsfeldern, eines für jedes Modell (siehe Abbildung~\ref{fig:frontend}).
 Die Sprachauswahl erfolgt über Buttons für die vier unterstützten Sprachen (DE, EN, FR, ES).
 
 \subsection{EU AI Act Konformität}
@@ -242,6 +242,17 @@ sprengen würden. Diese Funktionen wären für einen produktiven Einsatz erforde
 
 \vspace{0.5cm}
 \textbf{Repository:} \url{https://github.com/svenb23/KI-Translator}
+
+\clearpage
+\appendix
+\section{Anhang}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Frontend.png}
+\caption{Weboberfläche des Demonstrators mit zwei nebeneinander angeordneten Übersetzungsfeldern für DeepL und OPUS-MT}
+\label{fig:frontend}
+\end{figure}
 
 \clearpage
 \printbibliography
