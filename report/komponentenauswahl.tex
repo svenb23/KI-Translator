@@ -214,6 +214,29 @@ frei kommerziell nutzbar und können lokal über Hugging Face Transformers betri
 Diese Kombination ermöglicht im Demonstrator einen aussagekräftigen Vergleich zwischen
 einer kommerziellen Cloud-Lösung und einer selbstgehosteten Open-Source-Alternative.
 
+\section{Umsetzung}
+
+\subsection{Architektur}
+Das Backend besteht aus einer FastAPI-basierten REST-API mit zwei separaten Übersetzungs-Endpunkten 
+(\texttt{/translate/deepl} und \texttt{/translate/opus}) sowie einem Health-Check-Endpunkt. Die DeepL-Integration 
+nutzt die offizielle Python-Bibliothek \texttt{deepl} mit asynchroner Ausführung über \texttt{asyncio}. 
+Die automatische Spracherkennung wird direkt von der DeepL-API bereitgestellt.
+
+Für OPUS-MT werden die Helsinki-NLP-Modelle über Hugging Face Transformers geladen. Da nicht alle Sprachpaare 
+direkt verfügbar sind, wurde ein Pivot-Mechanismus implementiert: Übersetzungen wie DE$\rightarrow$FR erfolgen über den 
+Zwischenschritt DE$\rightarrow$EN$\rightarrow$FR. Ein LRU-Cache speichert bis zu 12 geladene OPUS-MT-Modelle, um wiederholte Ladezeiten zu vermeiden.
+
+Das Frontend besteht aus einer HTML/JavaScript-Weboberfläche mit zwei nebeneinander angeordneten Übersetzungsfeldern, eines für jedes Modell. 
+Die Sprachauswahl erfolgt über Buttons für die vier unterstützten Sprachen (DE, EN, FR, ES).
+
+\subsection{EU AI Act Konformität}
+
+Die API-Responses enthalten das Feld \texttt{ai\_generated: true} zur Kennzeichnung KI-generierter Inhalte gemäß EU AI Act Transparenzpflicht. 
+Das System wird als Niedrigrisiko-KI eingestuft, da es ausschließlich für Übersetzungsaufgaben ohne autonome Entscheidungsfindung eingesetzt wird.
+
+\vspace{0.5cm}
+\textbf{Repository:} \url{https://github.com/svenb23/KI-Translator}
+
 \clearpage
 \printbibliography
 
