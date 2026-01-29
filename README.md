@@ -12,3 +12,6 @@ Endpoints:
 - GET /health - Status
 
 Hinweis: OPUS-MT lädt beim ersten Aufruf Modelle (~300MB pro Sprachpaar).
+
+Tests:
+- Alle Tests ausführen: pytest tests/test_translation.py -v -s
