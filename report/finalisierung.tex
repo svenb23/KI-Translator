@@ -42,6 +42,9 @@
 
 \usepackage[german=quotes]{csquotes}
 
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+\addbibresource{references.bib}
+
 \usepackage{caption}
 \captionsetup[table]{font=small,skip=10pt,labelfont=bf}
 
@@ -68,6 +71,15 @@
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
+\section{Testaufbau}
+
+Zur Evaluierung des Demonstrators wurden in Zusammenarbeit mit ChatGPT \cite{chatgpt2024} 30 deutsche Testsätze 
+erstellt und ausgewählt, die unterschiedliche sprachliche Herausforderungen abdecken: Redewendungen und Idiome 
+(13 Sätze), Fachsprache und komplexe Grammatik (7 Sätze) sowie praxisnahe Ticketsystem-Anfragen aus dem IT-Support (10 Sätze). 
+Jeder Satz wurde in drei Zielsprachen übersetzt (Englisch, Französisch, Spanisch), sodass insgesamt 90 Übersetzungen pro 
+Engine entstanden. Die ChatGPT-Übersetzungen dienen dabei als Referenz für eine menschenähnliche Übersetzungsqualität.
+
+\clearpage
 \appendix
 \section{Testergebnisse: Vollständiger Vergleich}
 
@@ -307,5 +319,7 @@ FR & La réception de votre rapport d'erreur vous a déjà été confirmée ; no
 ES & Ya se le ha confirmado la recepción de su informe de errores; nuestro equipo está trabajando con la máxima urgencia en una solución. & Ya se le ha confirmado la recepción de su mensaje de error; estamos trabajando intensamente para encontrar una solución. & Usted ya ha sido confirmado la recepción de su mensaje de error; estamos trabajando duro en una solución. \\
 \end{longtable}
 \normalsize\setstretch{1.5}
+
+\printbibliography[title=Quellenverzeichnis]
 
 \end{document}
