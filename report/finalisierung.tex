@@ -84,25 +84,25 @@ Engine entstanden. Die ChatGPT-Übersetzungen dienen dabei als Referenz für ein
 
 DeepL übersetzte alle 90 Testsätze erfolgreich und lieferte durchgehend natürlich klingende Ergebnisse.
 Besonders hervorzuheben ist die Fähigkeit, deutsche Redewendungen idiomatisch korrekt zu übertragen. So
-wurde \enquote{Man soll den Tag nicht vor dem Abend loben} treffend mit \enquote{Don't count your chickens before they hatch}
+wurde \enquote{Man soll den Tag nicht vor dem Abend loben} (Satz~3) treffend mit \enquote{Don't count your chickens before they hatch}
 übersetzt, ein englisches Sprichwort mit derselben Bedeutung. Auch umgangssprachliche Wendungen
-wie \enquote{Jetzt geht's um die Wurst} wurden sinngemäß wiedergegeben (\enquote{Now it's crunch time}), anstatt wörtlich übersetzt zu werden.
+wie \enquote{Jetzt geht's um die Wurst} (Satz~2) wurden sinngemäß wiedergegeben (\enquote{Now it's crunch time}), anstatt wörtlich übersetzt zu werden.
 
 \subsection{Schwächen von OPUS-MT}
 
 OPUS-MT zeigte deutliche Limitierungen, die auf zwei Hauptursachen zurückzuführen sind:
 eine unzureichende Spracherkennung und das Fehlen von idiomatischem Wissen.
 
-Bei etwa einem Drittel der Sätze gab OPUS-MT den deutschen Originaltext unverändert zurück. 
-Dies betraf insbesondere Sätze ohne eindeutige deutsche Schlüsselwörter wie \enquote{Ich verstehe nur Bahnhof} 
-oder \enquote{Ich glaub, ich spinne!}. Die im Demonstrator implementierte
- Keyword-basierte Spracherkennung erkannte diese Sätze fälschlicherweise als Englisch, wodurch keine Übersetzung erfolgte.
+Bei etwa einem Drittel der Sätze gab OPUS-MT den deutschen Originaltext unverändert zurück.
+Dies betraf insbesondere Sätze ohne eindeutige deutsche Schlüsselwörter wie \enquote{Ich verstehe nur Bahnhof} (Satz~1)
+oder \enquote{Ich glaub, ich spinne!} (Satz~12). Die im Demonstrator implementierte
+Keyword-basierte Spracherkennung erkannte diese Sätze fälschlicherweise als Englisch, wodurch keine Übersetzung erfolgte.
 
-Redewendungen wurden häufig wörtlich übertragen, was zu sinnentstellenden Ergebnissen führte. \enquote{Jetzt geht's um die Wurst} 
-wurde zu \enquote{Now it's about the sausage}, \enquote{Sie hat nicht alle Tassen im Schrank}
- zu \enquote{She doesn't have all the cups in the closet}.
+Redewendungen wurden häufig wörtlich übertragen, was zu sinnentstellenden Ergebnissen führte. \enquote{Jetzt geht's um die Wurst} (Satz~2)
+wurde zu \enquote{Now it's about the sausage}, \enquote{Sie hat nicht alle Tassen im Schrank} (Satz~20)
+zu \enquote{She doesn't have all the cups in the closet}.
 
-Im Ticketsystem-Kontext übersetzte OPUS-MT \enquote{Ticket} fälschlicherweise
+Im Ticketsystem-Kontext übersetzte OPUS-MT \enquote{Ticket} (Satz~21, 25) fälschlicherweise
 als \enquote{billet} (Fahrkarte) statt \enquote{ticket} (Support-Anfrage). 
 
 
