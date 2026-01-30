@@ -88,6 +88,23 @@ wurde \enquote{Man soll den Tag nicht vor dem Abend loben} treffend mit \enquote
 übersetzt, ein englisches Sprichwort mit derselben Bedeutung. Auch umgangssprachliche Wendungen
 wie \enquote{Jetzt geht's um die Wurst} wurden sinngemäß wiedergegeben (\enquote{Now it's crunch time}), anstatt wörtlich übersetzt zu werden.
 
+\subsection{Schwächen von OPUS-MT}
+
+OPUS-MT zeigte deutliche Limitierungen, die auf zwei Hauptursachen zurückzuführen sind:
+eine unzureichende Spracherkennung und das Fehlen von idiomatischem Wissen.
+
+Bei etwa einem Drittel der Sätze gab OPUS-MT den deutschen Originaltext unverändert zurück. 
+Dies betraf insbesondere Sätze ohne eindeutige deutsche Schlüsselwörter wie \enquote{Ich verstehe nur Bahnhof} 
+oder \enquote{Ich glaub, ich spinne!}. Die im Demonstrator implementierte
+ Keyword-basierte Spracherkennung erkannte diese Sätze fälschlicherweise als Englisch, wodurch keine Übersetzung erfolgte.
+
+Redewendungen wurden häufig wörtlich übertragen, was zu sinnentstellenden Ergebnissen führte. \enquote{Jetzt geht's um die Wurst} 
+wurde zu \enquote{Now it's about the sausage}, \enquote{Sie hat nicht alle Tassen im Schrank}
+ zu \enquote{She doesn't have all the cups in the closet}.
+
+Im Ticketsystem-Kontext übersetzte OPUS-MT \enquote{Ticket} fälschlicherweise
+als \enquote{billet} (Fahrkarte) statt \enquote{ticket} (Support-Anfrage). 
+
 
 \clearpage
 \appendix
