@@ -64,10 +64,25 @@ Open-Source-Modellen, nicht trivial.
 
 \subsection*{Zielsetzung}
 Ziel dieses Projekts war die Entwicklung eines funktionsfähigen Demonstrators, der zwei unterschiedliche 
-Ansätze zur maschinellen Übersetzung vergleicht: eine kommerzielle Cloud-Lösung (DeepL API) und ein selbstgehostetes 
+Ansätze zur maschinellen Übersetzung präsentiert: eine kommerzielle Cloud-Lösung (DeepL API) und ein selbstgehostetes 
 Open-Source-Modell (Helsinki OPUS-MT). Der Demonstrator sollte als REST-API mit Weboberfläche realisiert werden und 
 die Sprachen Deutsch, Englisch, Französisch und Spanisch unterstützen. Dabei waren sowohl funktionale Anforderungen wie 
 automatische Spracherkennung als auch nicht-funktionale Anforderungen wie DSGVO-Konformität und 
 EU-AI-Act-Transparenzpflichten zu berücksichtigen.
+
+\subsection*{Methodik}
+Das Projekt wurde in drei Phasen durchgeführt: Konzeption, Erarbeitung und Finalisierung. In der Konzeptionsphase 
+erfolgte eine systematische Anforderungsanalyse mit MoSCoW-Priorisierung.
+
+Für die Implementierung wurde ein Python-Backend mit FastAPI entwickelt, das zwei separate 
+Übersetzungs-Endpunkte bereitstellt. Die DeepL-Integration nutzt die offizielle Python-Bibliothek mit 
+asynchroner Ausführung. Für OPUS-MT werden die Helsinki-NLP-Modelle über Hugging Face Transformers geladen, 
+wobei ein Pivot-Mechanismus über Englisch fehlende direkte Sprachpaare kompensiert. Das Frontend besteht 
+aus einer HTML/JavaScript-Weboberfläche mit Darstellung beider Übersetzungsergebnisse.
+
+Zur Evaluierung wurden 30 deutsche Testsätze erstellt, die unterschiedliche sprachliche Herausforderungen abdecken: 
+Redewendungen und Idiome (13 Sätze), Fachsprache und komplexe Grammatik (7 Sätze) sowie praxisnahe 
+Ticketsystem-Anfragen aus dem IT-Support (10 Sätze). Jeder Satz wurde in drei Zielsprachen übersetzt, 
+sodass insgesamt 90 Übersetzungen pro Engine entstanden.
 
 \end{document}
