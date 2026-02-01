@@ -85,4 +85,20 @@ Redewendungen und Idiome (13 Sätze), Fachsprache und komplexe Grammatik (7 Sät
 Ticketsystem-Anfragen aus dem IT-Support (10 Sätze). Jeder Satz wurde in drei Zielsprachen übersetzt, 
 sodass insgesamt 90 Übersetzungen pro Engine entstanden.
 
+\subsection*{Ergebnisse}
+Die Evaluation zeigt deutliche Qualitätsunterschiede zwischen den beiden Lösungen:
+
+DeepL übersetzte alle 90 Testsätze erfolgreich und lieferte durchgehend natürlich klingende Ergebnisse. 
+Besonders hervorzuheben ist die Fähigkeit, deutsche Redewendungen idiomatisch korrekt zu übertragen. So wurde 
+\enquote{Man soll den Tag nicht vor dem Abend loben} treffend mit \enquote{Don't count your chickens before they hatch} übersetzt.
+Auch umgangssprachliche Wendungen wie \enquote{Jetzt geht's um die Wurst} wurden sinngemäß wiedergegeben (\enquote{Now it's crunch time}), 
+anstatt wörtlich übersetzt zu werden.
+
+OPUS-MT zeigte deutliche Limitierungen. Bei etwa einem Drittel der Sätze gab das Modell den deutschen Originaltext 
+unverändert zurück, da die Spracherkennung diese Sätze fälschlicherweise als Englisch erkannte. 
+Redewendungen wurden häufig wörtlich übertragen, was zu sinnentstellenden Ergebnissen führte: \enquote{Jetzt geht's um die Wurst} 
+wurde zu \enquote{Now it's about the sausage}. Im Ticketsystem-Kontext übersetzte OPUS-MT \enquote{Ticket} fälschlicherweise 
+als \enquote{billet} (Fahrkarte) statt als Support-Anfrage.
+
+
 \end{document}
