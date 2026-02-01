@@ -1,0 +1,591 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{pifont}
+\usepackage{xcolor}
+\usepackage{threeparttable}
+\usepackage{ragged2e}
+
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+
+% Bewertungssymbole
+\newcommand{\cmark}{\textcolor{green!70!black}{\ding{51}}}
+\newcommand{\wmark}{\textcolor{orange}{\ding{115}}}
+\newcommand{\xmark}{\textcolor{red}{\ding{55}}}
+
+\usepackage[scaled]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[a4paper, top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+
+\usepackage{setspace}
+\setstretch{1.5}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\usepackage{microtype}
+\sloppy
+\hyphenpenalty=1000
+\tolerance=3000
+
+\renewcommand{\footnotesize}{\fontsize{10}{12}\selectfont}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\fontsize{14}{16}\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\fontsize{12}{14}\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\fontsize{11}{13}\bfseries}{\thesubsubsection}{1em}{}
+
+\usepackage[
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=blue,
+  filecolor=black,
+  urlcolor=blue
+]{hyperref}
+\usepackage[capitalise,nameinlink]{cleveref}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage}
+
+\usepackage[backend=biber, style=apa]{biblatex}
+\addbibresource{references.bib}
+
+\usepackage{titling}
+\usepackage{acronym}
+\usepackage[german=quotes]{csquotes}
+
+\usepackage{caption}
+\captionsetup[table]{font=small,skip=10pt,labelfont=bf}
+
+\usepackage{listings}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\begin{document}
+
+% ============================================================================
+% TITELSEITE
+% ============================================================================
+\begin{titlepage}
+    \thispagestyle{empty}
+    \centering
+    \vspace*{4cm}
+    {\Huge\bfseries Projekt: Generative KI im Unternehmenskontext \par}
+    \vspace{0.5cm}
+    {\Large (DLBFMPGKIU01) \par}
+    \vspace{1.5cm}
+    {\LARGE KI-basierte Sprachübersetzer im Unternehmenskontext \par}
+    \vspace{1cm}
+    {\large Gesamtdokumentation aller Projektphasen \par}
+    \vspace{2cm}
+    {\large Studiengang: Angewandte Künstliche Intelligenz \par}
+    \vspace{0.5cm}
+    {\large Sven Behrens \par}
+    \vspace{0.5cm}
+    {\large Matrikelnummer: 42303511 \par}
+    \vspace{0.5cm}
+    {\large Tutor: Prof. Dr. Oliver Dorn \par}
+    \vspace{1cm}
+    {\large \today \par}
+\end{titlepage}
+
+% ============================================================================
+% INHALTSVERZEICHNIS
+% ============================================================================
+\pagenumbering{Roman}
+\setcounter{page}{1}
+
+\tableofcontents
+\newpage
+
+\listoftables
+\newpage
+
+\listoffigures
+\newpage
+
+% ============================================================================
+% ABKÜRZUNGSVERZEICHNIS
+% ============================================================================
+\section*{Abkürzungsverzeichnis}
+\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
+\begin{acronym}[DSGVO]
+    \acro{API}{Application Programming Interface}
+    \acro{DSGVO}{Datenschutz-Grundverordnung}
+    \acro{KMU}{Kleine und mittlere Unternehmen}
+    \acro{LLM}{Large Language Model}
+    \acro{REST}{Representational State Transfer}
+    \acro{SLA}{Service-Level Agreement}
+\end{acronym}
+\newpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% ============================================================================
+% TEIL I: KONZEPTIONSPHASE
+% ============================================================================
+\part{Konzeptionsphase}
+
+\section{Konzeptvorstellung}
+Kleine und mittlere Unternehmen (KMU) mit internationalem Kundenstamm stehen vor der Herausforderung, Support-Anfragen
+in mehreren Sprachen effizient zu bearbeiten. Professionelle Übersetzungsdienste sind kostenintensiv, manuelle Übersetzungen
+verlangsamen den Workflow. KI-basierte Übersetzungs-APIs bieten eine Lösung, die sich nahtlos in bestehende Ticket-Systeme integrieren lässt.
+
+Das vorliegende Projekt wird im Rahmen des Moduls \enquote{Projekt: Generative KI im Unternehmenskontext} an der IU
+Internationalen Hochschule durchgeführt. Das fiktive Start-up \enquote{TranslateAI} spezialisiert sich auf KI-basierte Übersetzungs-APIs für KMU.
+
+\subsection{Zielsetzung}
+Ziel ist die Entwicklung eines kostengünstigen Demonstrators einer Übersetzungs-\ac{API}. Diese ermöglicht die Integration in
+Weboberflächen wie z.B. ein Ticket-System, das per Knopfdruck den Text an die \ac{API} sendet und die Übersetzung zurückerhält.
+Unterstützt werden Deutsch, Englisch, Französisch und Spanisch.
+
+\subsection{Methodisches Vorgehen}
+Das Projekt folgt einem Drei-Phasen-Zyklus: In der Konzeptionsphase erfolgen Anforderungsanalyse und Technologierecherche.
+Die Erarbeitungsphase umfasst die Auswahl geeigneter LLM-Komponenten sowie die Implementierung der REST-API und Weboberfläche.
+In der Finalisierungsphase werden Funktions- und Qualitätstests durchgeführt und die Ergebnisse dokumentiert.
+
+Für den Demonstrator wird FastAPI mit einfachem HTML/JavaScript eingesetzt, da dies für einen Prototyp
+ausreichend ist und schnelle Entwicklung ermöglicht. Ein späterer Umstieg auf ein umfangreicheres Framework wie Django und Vue.js
+wäre bei Bedarf möglich.
+
+\subsection{Zielgruppe}
+Der Demonstrator richtet sich an KMU mit 10--250 Mitarbeitern und internationalem Kundenkontakt. Typische Anwendungsfälle
+sind die Übersetzung von Support-Tickets und Kundenanfragen. Die \ac{API} ermöglicht die Integration in Ticket-Systeme und Webanwendungen.
+
+\subsection{Tragfähigkeitsprüfung}
+Für das Konzept sprechen der wachsende Marktbedarf bei KMU, die technologische Reife aktueller LLMs sowie kosteneffiziente Pay-per-Use-Modelle.
+REST-APIs sind Industriestandard und ermöglichen einfache Integration.
+
+Risiken bestehen bei der Übersetzungsqualität (Halluzinationen bei Fachbegriffen), Vendor Lock-in und Datenschutz.
+
+\newpage
+
+% ============================================================================
+% ANFORDERUNGSLISTE
+% ============================================================================
+\section{Priorisierte Anforderungsliste}
+
+\subsection{Ziel-KMU}
+
+\begin{table}[H]
+\centering
+\caption{Charakteristiken der Ziel-KMU}
+\begin{tabular}{p{4cm}p{10cm}}
+\toprule
+\textbf{Merkmal} & \textbf{Beschreibung} \\
+\midrule
+Branche & Dienstleistung, E-Commerce, IT-Services mit internationalem Kundenstamm \\
+Unternehmensgröße & 10--250 Mitarbeiter (EU-Definition KMU) \\
+IT-Kompetenz & Grundlegende IT-Kenntnisse, Erfahrung mit Ticket-Systemen \\
+Übersetzungsbedarf & Support-Tickets, Kundenanfragen, E-Mail-Korrespondenz \\
+Systemlandschaft & Nutzung gängiger Ticket- oder CRM-Systeme (z.B. Zendesk, Freshdesk) \\
+Budget & Begrenzt, Fokus auf kosteneffiziente Lösungen \\
+Voraussetzungen & Internetzugang und Browser oder API-fähiges System \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Funktionale Anforderungen}
+
+\begin{table}[H]
+\centering
+\caption{Funktionale Anforderungen}
+\begin{tabular}{p{1.2cm}p{7cm}p{5cm}}
+\toprule
+\textbf{Priorität} & \textbf{Beschreibung} & \textbf{Begründung} \\
+\midrule
+Must & REST-API für Übersetzungen zwischen DE, EN, FR, ES & Kernfunktion des Demonstrators \\
+Must & API-Endpunkt mit Parametern für Quell-/Zielsprache und Text & Voraussetzung für Ticket-System-Integration \\
+Must & Weboberfläche mit Textfeld, Sprachauswahl und Übersetzungs-Button & Direkte Nutzung für die Vorstellung \\
+Must & Standardisierte Status- und Fehlermeldungen (HTTP-Codes, JSON) & Notwendig für stabile Systemintegration \\
+Should & Erhalt von Textformatierungen (Absätze, Listen) & Wichtig für strukturierte Tickets \\
+Should & Automatische Erkennung der Quellsprache, falls nicht angegeben & Reduziert Bedienaufwand und Fehlerquellen \\
+Should & Übersetzung mehrerer Texte in einer Anfrage (Batch) & Effizienzsteigerung bei Ticket-Verarbeitung \\
+Should & Protokollierung von Anfragen ohne Speicherung des Inhalts & Ermöglicht Debugging und Nachvollziehbarkeit \\
+Could & Callback-URLs für asynchrone Verarbeitung & Für längere Texte hilfreich \\
+Could & Dashboard für API-Nutzung und Tokenverbrauch & Kostenkontrolle \\
+Won't & Weitere Sprachen (z.B. Chinesisch, Japanisch) & Außerhalb des Projektumfangs \\
+Won't & Simultanübersetzung für Videokonferenzen & Technisch zu komplex \\
+Won't & Speech-to-Text und Text-to-Speech & Anderer Anwendungsfall \\
+Won't & PDF/Word-Verarbeitung mit Layout-Erhalt & Erhöhte Komplexität \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Nicht-funktionale Anforderungen}
+
+\begin{table}[H]
+\centering
+\caption{Nicht-funktionale Anforderungen}
+\begin{tabular}{p{1.2cm}p{7cm}p{5cm}}
+\toprule
+\textbf{Priorität} & \textbf{Beschreibung} & \textbf{Begründung} \\
+\midrule
+Must & Übersetzung muss verständlich und sinngemäß korrekt sein & Qualität entscheidet über Nutzbarkeit \\
+Should & Antwortzeit der API unter 3 Sekunden & Akzeptanz im Arbeitsalltag \\
+Should & Unterstützung von mind. 100 parallelen Anfragen & Relevanz für KMU-Einsatz \\
+Should & OpenAPI/Swagger-Dokumentation & Einfache Integration \\
+Should & API-Key-basierte Authentifizierung & Zugriffskontrolle \\
+Should & HTTPS-Verschlüsselung für alle Übertragungen & Datenschutz \\
+Should & Betriebskosten unter 100€/Monat bei typischem KMU-Volumen & Budget der Zielgruppe \\
+Could & Konfigurierbare Rate-Limits pro API-Key & Missbrauchsschutz \\
+Could & Containerisierbar (z.B. Docker) & Flexible Bereitstellung \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Rechtliche und ethische Anforderungen}
+
+\begin{table}[H]
+\centering
+\caption{Rechtliche und ethische Anforderungen}
+\begin{tabular}{p{1.2cm}p{7cm}p{5cm}}
+\toprule
+\textbf{Priorität} & \textbf{Beschreibung} & \textbf{Begründung} \\
+\midrule
+Must & Keine dauerhafte Speicherung von Übersetzungstexten & DSGVO-Konformität \\
+Must & Verwendete LLM-API muss kommerziell nutzbar sein & Unternehmenskontext \\
+Must & Einstufung des Systems als Niedrigrisiko-KI gemäß EU AI Act & Regulatorische Einordnung \\
+Must & Eingabetexte verbleiben im Eigentum des Nutzers & Rechtssicherheit \\
+Should & Transparente Dokumentation der Datenverarbeitung & Vertrauensbildung \\
+Should & Kennzeichnung als KI-generierte Übersetzung & EU AI-Act Transparenzpflicht \\
+Should & Keine Nutzung der Texte für Modelltraining & Datenschutz und IP-Schutz \\
+Should & KI darf keine zusätzlichen Inhalte halluzinieren & Risiko bei LLM-Übersetzungen \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\newpage
+
+% ============================================================================
+% TEIL II: ERARBEITUNGSPHASE
+% ============================================================================
+\part{Erarbeitungsphase}
+
+\section{Komponentenauswahl}
+
+\subsection{Einleitung}
+Für die Umsetzung des Übersetzungs-Demonstrators ist die Auswahl einer geeigneten Übersetzungskomponente erforderlich.
+Diese Dokumentation beschreibt das systematische Auswahlverfahren basierend auf den definierten Anforderungen.
+
+\subsection{Untersuchte Optionen}
+
+Folgende Übersetzungslösungen wurden analysiert:
+
+\begin{table}[H]
+\centering
+\caption{Übersicht der untersuchten Lösungen}
+\begin{tabular}{p{4cm}p{3cm}p{6.5cm}}
+\toprule
+\textbf{Lösung} & \textbf{Typ} & \textbf{Kurzbeschreibung} \\
+\midrule
+DeepL API (Pro) & Cloud-API & Spezialisierte Übersetzungs-API, Fokus auf EU-Sprachen \parencite{deepl2024llm} \\
+Google Cloud Translation & Cloud-API & Breites Sprachangebot (133 Sprachen) \parencite{languageio2025} \\
+Microsoft Azure Translator & Cloud-API & Enterprise-Lösung mit Compliance-Fokus \parencite{microsoft2024notrace} \\
+Amazon Translate & Cloud-API & AWS-integrierte Übersetzungslösung \parencite{aws2024translate} \\
+OpenAI GPT-4 & LLM-API & Generatives Sprachmodell mit Übersetzungsfähigkeit \parencite{getblend2025llm} \\
+Anthropic Claude & LLM-API & Generatives Sprachmodell, großer Kontext \parencite{getblend2025llm} \\
+Meta NLLB-200 & Open-Source & Vielsprachiges Übersetzungsmodell \parencite{wmt2024findings} \\
+Helsinki OPUS-MT & Open-Source & Sprachpaarspezifische Modelle \parencite{wmt2024findings} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Bewertung anhand der Anforderungen}
+
+Die Lösungen werden anhand der in der Anforderungsliste definierten Kriterien bewertet.
+Die Bewertung erfolgt mit: \cmark{} = erfüllt, \wmark{} = teilweise erfüllt, \xmark{} = nicht erfüllt.
+
+\subsubsection{Funktionale Anforderungen}
+
+\begin{table}[H]
+\centering
+\caption{Bewertung funktionaler Anforderungen}
+\footnotesize
+\begin{tabular}{p{2.5cm}cccccccc}
+\toprule
+\textbf{Anforderung} & \textbf{DeepL} & \textbf{Azure} & \textbf{Google} & \textbf{Amazon} & \textbf{GPT-4} & \textbf{Claude} & \textbf{NLLB} & \textbf{OPUS} \\
+\midrule
+REST-API verfügbar & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark & \wmark & \wmark \\
+Sprachen DE/EN/FR/ES & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark \\
+Batch-Übersetzung & \cmark & \cmark & \cmark & \cmark & \wmark & \wmark & \wmark & \wmark \\
+Spracherkennung & \cmark & \cmark & \cmark & \cmark & \wmark & \wmark & \wmark & \wmark \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+DeepL, Azure, Google und Amazon bieten vollständige REST-APIs mit automatischer Spracherkennung und Batch-Verarbeitung \parencite{deepl2024api, microsoft2024notrace, aws2024translate}.
+GPT-4 und Claude erfordern Prompt-basierte Integration; Claude bietet keine dedizierte Batch-API, ermöglicht aber parallele Requests \parencite{anthropic2024api}.
+Die Open-Source-Modelle NLLB und OPUS-MT benötigen eigene API-Wrapper und externe Spracherkennungslösungen \parencite{picovoice2025opensource}.
+
+\subsubsection{Nicht-funktionale Anforderungen}
+
+\begin{table}[H]
+\centering
+\caption{Bewertung nicht-funktionaler Anforderungen}
+\footnotesize
+\begin{tabular}{p{2.5cm}cccccccc}
+\toprule
+\textbf{Anforderung} & \textbf{DeepL} & \textbf{Azure} & \textbf{Google} & \textbf{Amazon} & \textbf{GPT-4} & \textbf{Claude} & \textbf{NLLB} & \textbf{OPUS} \\
+\midrule
+Übersetzungsqualität & \cmark & \wmark & \cmark & \cmark & \cmark & \cmark & \wmark & \wmark \\
+Antwortzeit < 3s & \cmark & \cmark & \cmark & \cmark & \wmark & \wmark & \wmark & \cmark \\
+Kosten < 100€/Monat & \wmark & \cmark & \wmark & \cmark & \wmark & \wmark & \cmark & \cmark \\
+100 parallele Anfragen & \wmark & \cmark & \cmark & \cmark & \xmark & \wmark & \wmark & \wmark \\
+API-Key-Auth & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark & \xmark & \xmark \\
+OpenAPI/Swagger-Doku & \cmark & \wmark & \wmark & \wmark & \wmark & \wmark & \xmark & \xmark \\
+HTTPS-Verschlüsselung & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark & \wmark & \wmark \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+DeepL und Claude liefern die höchste Übersetzungsqualität. Claude wurde in Tests als „Translation Champion" bezeichnet \parencite{taia2025comparison, getblend2025llm}.
+Azure und Amazon bieten das beste Preis-Leistungs-Verhältnis mit ca. 10--15\$/Mio Zeichen und Free-Tier-Optionen \parencite{azure2024limits, aws2024translate}.
+
+\subsubsection{Rechtliche und ethische Anforderungen}
+
+\begin{table}[H]
+\centering
+\caption{Bewertung rechtlicher und ethischer Anforderungen}
+\footnotesize
+\begin{tabular}{p{2.5cm}cccccccc}
+\toprule
+\textbf{Anforderung} & \textbf{DeepL} & \textbf{Azure} & \textbf{Google} & \textbf{Amazon} & \textbf{GPT-4} & \textbf{Claude} & \textbf{NLLB} & \textbf{OPUS} \\
+\midrule
+DSGVO-konform & \cmark & \cmark & \cmark & \wmark & \wmark & \cmark & \cmark & \cmark \\
+Kein Modelltraining & \cmark & \cmark & \cmark & \wmark & \cmark & \cmark & \cmark & \cmark \\
+Daten-Eigentum Nutzer & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark \\
+Kein Halluzinieren & \cmark & \cmark & \cmark & \cmark & \wmark & \wmark & \cmark & \cmark \\
+Kommerzielle Nutzung & \cmark & \cmark & \cmark & \cmark & \cmark & \cmark & \xmark & \cmark \\
+Transparente Datenverarb. & \cmark & \cmark & \cmark & \cmark & \wmark & \cmark & \cmark & \cmark \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+DeepL, Azure, Google und Claude sind DSGVO-konform und nutzen keine Kundendaten zum Modelltraining \parencite{deepl2024privacy, microsoft2024notrace, google2024datausage, anthropic2024privacy}.
+Meta NLLB ist unter CC-BY-NC 4.0 lizenziert und daher nicht kommerziell nutzbar \parencite{picovoice2025opensource}.
+OPUS-MT-Modelle sind unter CC-BY 4.0 frei verfügbar.
+
+\subsection{Zusammenfassung und Empfehlung}
+
+\begin{table}[H]
+\centering
+\caption{Gesamtbewertung der Lösungen}
+\small
+\begin{tabular}{p{4cm}ccp{6cm}}
+\toprule
+\textbf{Lösung} & \textbf{Eignung} & \textbf{Rang} & \textbf{Begründung} \\
+\midrule
+DeepL API (Pro) & \cmark & 1 & Höchste Qualität für DE/EN/FR/ES, DSGVO-konform \\
+Microsoft Azure Translator & \cmark & 2 & Bestes Preis-Leistungs-Verhältnis, skalierbar \\
+Amazon Translate & \cmark & 3 & Günstig, schnell, aber Opt-Out für DSGVO nötig \\
+Google Cloud Translation & \wmark & 4 & Solide Qualität, aber teurer als Azure/Amazon \\
+Anthropic Claude & \wmark & 5 & Sehr hohe Qualität, aber langsamer und Rate-Limits \\
+Helsinki OPUS-MT & \wmark & 6 & Open-Source-Alternative, mehr Aufwand \\
+OpenAI GPT-4 & \xmark & -- & Zu langsam, hohe Kosten, strikte API-Limits \\
+Meta NLLB-200 & \xmark & -- & Nicht kommerziell nutzbar (CC-BY-NC) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Für den Demonstrator werden DeepL und OPUS-MT implementiert.
+
+\textbf{DeepL API} als Qualitätsführer: DeepL bietet die höchste Übersetzungsqualität für europäische Sprachen,
+vollständige DSGVO-Konformität mit Serverstandort Deutschland und eine gut dokumentierte REST-API.
+
+\textbf{Helsinki OPUS-MT} als Open-Source-Alternative: OPUS-MT ermöglicht einen direkten Vergleich mit einer
+selbstgehosteten Lösung ohne externe API-Abhängigkeit \parencite{reddit2022nllb}. Die Modelle sind unter CC-BY 4.0
+frei kommerziell nutzbar und können lokal über Hugging Face Transformers betrieben werden.
+
+\newpage
+
+\section{Erläuterung zur Umsetzung}
+
+\subsection{Architektur}
+Das Backend besteht aus einer FastAPI-basierten REST-API mit zwei separaten Übersetzungs-Endpunkten
+(\texttt{/translate/deepl} und \texttt{/translate/opus}) sowie einem Health-Check-Endpunkt. Die DeepL-Integration
+nutzt die offizielle Python-Bibliothek \texttt{deepl} mit asynchroner Ausführung über \texttt{asyncio}.
+Die automatische Spracherkennung wird direkt von der DeepL-API bereitgestellt.
+
+Für OPUS-MT werden die Helsinki-NLP-Modelle über Hugging Face Transformers geladen. Da nicht alle Sprachpaare
+direkt verfügbar sind, wurde ein Pivot-Mechanismus implementiert: Übersetzungen wie DE$\rightarrow$FR erfolgen über den
+Zwischenschritt DE$\rightarrow$EN$\rightarrow$FR. Ein LRU-Cache speichert bis zu 12 geladene OPUS-MT-Modelle, um wiederholte Ladezeiten zu vermeiden.
+
+Das Frontend besteht aus einer HTML/JavaScript-Weboberfläche mit zwei nebeneinander angeordneten Übersetzungsfeldern, eines für jedes Modell (siehe Abbildung~\ref{fig:frontend}).
+Die Sprachauswahl erfolgt über Buttons für die vier unterstützten Sprachen (DE, EN, FR, ES).
+
+\subsection{EU AI Act Konformität}
+
+Die API-Responses enthalten das Feld \texttt{ai\_generated: true} zur Kennzeichnung KI-generierter Inhalte gemäß EU AI Act Transparenzpflicht.
+Das System wird als Niedrigrisiko-KI eingestuft, da es ausschließlich für Übersetzungsaufgaben ohne autonome Entscheidungsfindung eingesetzt wird.
+
+\subsection{Abgrenzung}
+
+Der Demonstrator erfüllt alle Must-Anforderungen der Anforderungsliste. Einige Should-Anforderungen wie API-Key-basierte Authentifizierung,
+HTTPS-Verschlüsselung, Batch-Übersetzung und Request-Logging wurden bewusst nicht implementiert, da diese für einen Demonstrator den Rahmen
+sprengen würden. Diese Funktionen wären für einen produktiven Einsatz erforderlich, sind aber für die Demonstration der Kernfunktionalität nicht notwendig.
+
+\vspace{0.5cm}
+\textbf{Repository:} \url{https://github.com/svenb23/KI-Translator}
+
+\newpage
+
+% ============================================================================
+% TEIL III: FINALISIERUNGSPHASE
+% ============================================================================
+\part{Finalisierungsphase}
+
+\section{Testaufbau}
+
+Zur Evaluierung des Demonstrators wurden in Zusammenarbeit mit ChatGPT \cite{chatgpt2024} 30 deutsche Testsätze
+erstellt und ausgewählt, die unterschiedliche sprachliche Herausforderungen abdecken: Redewendungen und Idiome
+(13 Sätze), Fachsprache und komplexe Grammatik (7 Sätze) sowie praxisnahe Ticketsystem-Anfragen aus dem IT-Support (10 Sätze).
+Jeder Satz wurde in drei Zielsprachen übersetzt (Englisch, Französisch, Spanisch), sodass insgesamt 90 Übersetzungen pro
+Engine entstanden. Die ChatGPT-Übersetzungen dienen dabei als Referenz für eine menschenähnliche Übersetzungsqualität.
+
+\section{Diskussion der Ergebnisse}
+
+\subsection{Stärken von DeepL}
+
+DeepL übersetzte alle 90 Testsätze erfolgreich und lieferte durchgehend natürlich klingende Ergebnisse.
+Besonders hervorzuheben ist die Fähigkeit, deutsche Redewendungen idiomatisch korrekt zu übertragen. So
+wurde \enquote{Man soll den Tag nicht vor dem Abend loben} (Satz~3) treffend mit \enquote{Don't count your chickens before they hatch}
+übersetzt, ein englisches Sprichwort mit derselben Bedeutung. Auch umgangssprachliche Wendungen
+wie \enquote{Jetzt geht's um die Wurst} (Satz~2) wurden sinngemäß wiedergegeben (\enquote{Now it's crunch time}), anstatt wörtlich übersetzt zu werden.
+
+\subsection{Schwächen von OPUS-MT}
+
+OPUS-MT zeigte deutliche Limitierungen, die auf zwei Hauptursachen zurückzuführen sind:
+eine unzureichende Spracherkennung und das Fehlen von idiomatischem Wissen.
+
+Bei etwa einem Drittel der Sätze gab OPUS-MT den deutschen Originaltext unverändert zurück.
+Dies betraf insbesondere Sätze ohne eindeutige deutsche Schlüsselwörter wie \enquote{Ich verstehe nur Bahnhof} (Satz~1)
+oder \enquote{Ich glaub, ich spinne!} (Satz~12). Die im Demonstrator implementierte
+Keyword-basierte Spracherkennung erkannte diese Sätze fälschlicherweise als Englisch, wodurch keine Übersetzung erfolgte.
+
+Redewendungen wurden häufig wörtlich übertragen, was zu sinnentstellenden Ergebnissen führte. \enquote{Jetzt geht's um die Wurst} (Satz~2)
+wurde zu \enquote{Now it's about the sausage}, \enquote{Sie hat nicht alle Tassen im Schrank} (Satz~20)
+zu \enquote{She doesn't have all the cups in the closet}.
+
+Im Ticketsystem-Kontext übersetzte OPUS-MT \enquote{Ticket} (Satz~21, 25) fälschlicherweise
+als \enquote{billet} (Fahrkarte) statt \enquote{ticket} (Support-Anfrage).
+
+\subsection{Empfehlung für den KMU-Einsatz}
+Für kleine und mittlere Unternehmen lässt sich aus den Testergebnissen eine klare Empfehlung ableiten:
+
+DeepL eignet sich für alle produktiven Anwendungsfälle, insbesondere für Kundenkommunikation. Die Kosten sind für die gebotene Qualität angemessen.
+
+OPUS-MT kann als Alternative für einfache, eindeutige Texte dienen, bei denen keine
+Redewendungen oder umgangssprachlichen Formulierungen vorkommen. Für den produktiven Einsatz in der Kundenkommunikation ist das Modell jedoch nicht geeignet.
+Falls der Kunde eine lokal gehostete Anwendung wünscht, sollten die Mitarbeiter speziell für den Umgang mit Fehlern des Modells geschult werden.
+
+\newpage
+
+% ============================================================================
+% ANHANG
+% ============================================================================
+\appendix
+\part*{Anhang}
+\addcontentsline{toc}{part}{Anhang}
+
+\section{Frontend-Screenshot}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Frontend.png}
+\caption{Weboberfläche des Demonstrators mit zwei nebeneinander angeordneten Übersetzungsfeldern für DeepL und OPUS-MT}
+\label{fig:frontend}
+\end{figure}
+
+\newpage
+
+\section{Testergebnisse: Vollständiger Vergleich}
+
+Getestet wurden 30 deutsche Sätze mit Übersetzung in drei Zielsprachen (EN, FR, ES).
+Verglichen werden DeepL, OPUS-MT und eine ChatGPT-Referenzübersetzung.
+
+\subsection{Redewendungen und Idiome (Sätze 1--13)}
+
+\small\setstretch{1.0}
+\begin{longtable}{L{0.22\textwidth}L{0.24\textwidth}L{0.24\textwidth}L{0.24\textwidth}}
+\toprule
+\textbf{Deutsch} & \textbf{Referenz} & \textbf{DeepL} & \textbf{OPUS-MT} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Deutsch} & \textbf{Referenz} & \textbf{DeepL} & \textbf{OPUS-MT} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
+
+\multicolumn{4}{l}{\textbf{[01] Ich verstehe nur Bahnhof.}} \\
+EN & It's all Greek to me. & I don't understand a word. & Ich verstehe nur Bahnhof. \\
+FR & C'est du chinois pour moi. & Je n'y comprends rien. & Ich Verstehe nur Bahnhof. \\
+ES & No entiendo ni jota. & No entiendo nada. & Ich verstehe nur Bahnhof. \\
+\midrule
+
+\multicolumn{4}{l}{\textbf{[02] Jetzt geht's um die Wurst.}} \\
+EN & Now it's do or die. & Now it's crunch time. & Now it's about the sausage. \\
+FR & Maintenant, ça passe ou ça casse. & Maintenant, c'est le moment décisif. & Maintenant, c'est à propos de la saucisse. \\
+ES & Ahora va en serio. & Ahora es el momento decisivo. & Ahora se trata de la salchicha. \\
+\midrule
+
+\multicolumn{4}{l}{\textbf{[03] Man soll den Tag nicht vor dem Abend loben.}} \\
+EN & Don't count your chickens before they hatch. & Don't count your chickens before they hatch. & Don't praise the day before the evening. \\
+FR & Il ne faut pas crier victoire trop tôt. & Il ne faut pas vendre la peau de l'ours avant de l'avoir tué. & Ne louez pas la veille du soir. \\
+ES & No cantes victoria antes de tiempo. & No hay que alabar el día antes de que termine. & No alaben el día antes de la noche. \\
+\end{longtable}
+\normalsize\setstretch{1.5}
+
+\textit{Hinweis: Die vollständige Tabelle mit allen 30 Testsätzen befindet sich im separaten Dokument \enquote{Finalisierung und Testergebnisse}.}
+
+\newpage
+
+% ============================================================================
+% LITERATURVERZEICHNIS
+% ============================================================================
+\printbibliography[title=Quellenverzeichnis]
+
+\end{document}
