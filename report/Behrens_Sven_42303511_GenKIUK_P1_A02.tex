@@ -34,6 +34,9 @@
 \renewcommand{\headrulewidth}{0pt}
 \fancyfoot[C]{\thepage}
 
+\usepackage[backend=biber, style=apa]{biblatex}
+\addbibresource{references.bib}
+
 \usepackage[german=quotes]{csquotes}
 
 \usepackage{caption}
@@ -141,9 +144,9 @@ Could & Containerisierbar (z.B. Docker) & Flexible Bereitstellung \\
 \toprule
 \textbf{Priorität} & \textbf{Beschreibung} & \textbf{Begründung} \\
 \midrule
-Must & Keine dauerhafte Speicherung von Übersetzungstexten & DSGVO-Konformität \\
+Must & Keine dauerhafte Speicherung von Übersetzungstexten & DSGVO-Konformität \parencite{dsgvo2016} \\
 Must & Verwendete LLM-API muss kommerziell nutzbar sein & Unternehmenskontext \\
-Must & Einstufung des Systems als Niedrigrisiko-KI gemäß EU AI Act & Regulatorische Einordnung und Einhaltung gesetzlicher Anforderungen \\
+Must & Einstufung des Systems als Niedrigrisiko-KI gemäß EU AI Act \parencite{euaiact2024} & Regulatorische Einordnung und Einhaltung gesetzlicher Anforderungen \\
 Must & Eingabetexte verbleiben im Eigentum des Nutzers & Rechtssicherheit \\
 Should & Transparente Dokumentation der Datenverarbeitung & Vertrauensbildung \\
 Should & Kennzeichnung als KI-generierte Übersetzung & EU AI-Act Transparenzpflicht \\
@@ -152,5 +155,8 @@ Should & KI darf keine zusätzlichen Inhalte halluzinieren & Risiko bei LLM-Übe
 \bottomrule
 \end{tabular}
 \end{table}
+
+\newpage
+\printbibliography[title=Quellenverzeichnis]
 
 \end{document}
